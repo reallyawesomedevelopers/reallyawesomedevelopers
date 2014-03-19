@@ -1,2 +1,2 @@
-reallyawesomedevelopers.github.com
+reallyawesomedevelopers.github.io
 ==================================
