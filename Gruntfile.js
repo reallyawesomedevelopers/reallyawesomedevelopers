@@ -86,6 +86,21 @@ module.exports = function (grunt) {
 				runInBackground: false
 			}
 		},
+		// build control for updating gh-pages with dist
+		buildcontrol: {
+			options: {
+				dir: 'dist',
+				commit: true,
+				push: true,
+				message: 'Syncing gh-pages with master.'
+			},
+			pages: {
+				options: {
+					remote: 'git@github.com:reallyawesomedevelopers/reallyawesomedevelopers.github.io.git',
+					branch: 'gh-pages'
+				}
+			},
+		},
 		// live watcher for file changes
 		watch: {
 			clientFiles: {
@@ -103,8 +118,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-bower-task');
 	grunt.loadNpmTasks('grunt-http-server');
+	grunt.loadNpmTasks('grunt-build-control');
 	// Tasks.
 	grunt.registerTask('default', ['bower:dev', 'http-server:dev']);
 	grunt.registerTask('prod', ['bower:prod', 'build', 'http-server:prod']);
+	grunt.registerTask('push', ['build','buildcontrol:pages']);
 	grunt.registerTask('build', ['clean:dist', 'copy', 'cssmin', 'uglify', 'clean:styles', 'clean:scripts']);
 };
