@@ -2,9 +2,9 @@ reallyawesomedevelopers.github.io
 ==================================
 Under Construction
 
-To run dev locally:
-```npm install && grunt``
-If you want to run prod locally:
-```npm install && grunt prod```
-Then go to:
-```http://localhost:8080/```
+To run project, first run ```npm install```
+
+For Dev: ```grunt```
+For Prod: ```grunt prod```
+
+App URL: ```http://localhost:8080/```
