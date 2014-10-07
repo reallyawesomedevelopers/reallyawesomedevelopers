@@ -115,9 +115,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-http-server');
 	grunt.loadNpmTasks('grunt-build-control');
 	// Tasks.
-	grunt.registerTask('default', ['http-server:dev']);
-	grunt.registerTask('prod', ['build', 'http-server:prod']);
+	grunt.registerTask('default', ['jshint', 'http-server:dev']);
+	grunt.registerTask('prod', ['jshint', 'build', 'http-server:prod']);
 	grunt.registerTask('updateBower', ['bower:dev']);
-	grunt.registerTask('push', ['updateBower', 'build', 'buildcontrol:pages']);
+	grunt.registerTask('push', ['updateBower', 'jshint', 'build', 'buildcontrol:pages']);
 	grunt.registerTask('build', ['clean:dist', 'copy', 'cssmin', 'uglify', 'clean:styles', 'clean:scripts']);
 };
