@@ -12,11 +12,6 @@ module.exports = function (grunt) {
 		},
 		// install bower stuff
 		bower: {
-			prod: {
-				options: {
-					targetDir: './dist/bower_components/'
-				}
-			},	
 			dev: {
 				options: {
 					targetDir: './app/bower_components/'
@@ -120,8 +115,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-http-server');
 	grunt.loadNpmTasks('grunt-build-control');
 	// Tasks.
-	grunt.registerTask('default', ['bower:dev', 'http-server:dev']);
-	grunt.registerTask('prod', ['bower:prod', 'build', 'http-server:prod']);
-	grunt.registerTask('push', ['build','buildcontrol:pages']);
+	grunt.registerTask('default', ['http-server:dev']);
+	grunt.registerTask('prod', ['build', 'http-server:prod']);
+	grunt.registerTask('updateBower', ['bower:dev']);
+	grunt.registerTask('push', ['updateBower', 'build', 'buildcontrol:pages']);
 	grunt.registerTask('build', ['clean:dist', 'copy', 'cssmin', 'uglify', 'clean:styles', 'clean:scripts']);
 };
